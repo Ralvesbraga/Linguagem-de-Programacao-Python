@@ -1,20 +1,19 @@
 n = int(input())
-c = 0
-mat = []
+consultas = []
+atendimentos = 0
+for i in range(n):
+    entrada = []
+    antI, antF = map(int, input().split())
+    entrada.append(antF)
+    entrada.append(antI)
+    consultas.append(entrada)
+consultas.sort()
+antI = consultas[0][1]
+antF = consultas[0][0]
+for i in range(1, n):
+    if consultas[i][0] >= antI:
+        atendimentos += 1
+        antI = consultas[i][1]
+print(consultas)
+print(atendimentos)
 
-for i in range(n):
-    a = list(map(int, input().split()))
-    mat.append(a)
-mat.sort()
-for i in range(n):
-    if i == 0:
-        f = mat[0][1]
-        c = 0
-    if i > 0:
-        i2 = mat[i][0]
-        f2 = mat[i][1]
-        if f2 > f:
-            c += 1
-            i = i2
-            f = f2
-print(c)
